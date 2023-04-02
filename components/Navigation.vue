@@ -1,10 +1,11 @@
 <template>
     <nav class="navigation">
-        <Logo />
-        <nuxt-link class="link" to="/">Main</nuxt-link>
-        <nuxt-link class="link" to="/about">About page</nuxt-link>
-        <button class="button">Enter</button>
-        <!-- <Modal /> -->
+        <Logo :title="logoText" />
+        <nuxt-link v-for="elem in linksArray" class="link" :to="elem.to" :key="elem.title">
+            {{ elem.title }}
+        </nuxt-link>
+        <button class="button" @click=" toggleModal">{{ text }}</button>
+        <Modal v-show="showModal" :onToggle="toggleModal"/>
     </nav>
 </template>
 
@@ -13,6 +14,22 @@ import Logo from './navigation/logo'
 export default {
     components: {
         Logo
+    },
+    data() {
+        return {
+            text: 'Enter',
+            logoText: 'НКО-проект',
+            linksArray: [
+                { to: '/', title: 'Main' },
+                { to: '/about', title: 'About page' }
+            ],
+            showModal: false,
+        }
+    },
+    methods: {
+        toggleModal(){
+this.showModal=!this.showModal
+        }
     }
 }
 </script>

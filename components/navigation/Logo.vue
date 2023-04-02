@@ -1,11 +1,17 @@
 <template>
     <h1>
-        NGO project
+        {{ title }}
     </h1>
 </template>
 
 <script>
     export default {
+props:{
+    title: {
+        type: String,
+        default: '',
+    }
+}
         
     }
 </script>
