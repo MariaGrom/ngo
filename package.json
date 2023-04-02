@@ -23,7 +23,7 @@
   },
   "husky":{
     "hooks":{
-      "pre-commit":"npm run check"
+      "pre-commit":"npm run format"
     }
   }
 }
