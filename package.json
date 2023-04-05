@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
@@ -21,9 +22,9 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.7"
   },
-  "husky":{
-    "hooks":{
-      "pre-commit":"npm run format"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format"
     }
   }
 }

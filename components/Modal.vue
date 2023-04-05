@@ -1,17 +1,19 @@
 <template>
-  <article class="modal-wrap">
+  <article class="modal-wrap" @click="registerClick">
     <div class="container">
-      <span class="icon-close" @click="onToggle"></span>
+      <span class="icon-close" @click="$emit('modalClose')"></span>
       <h1>Вход</h1>
-      <label class="label">
-        Email
-        <input class="input" type="email" v-model="email">
-      </label>
-      <label class="label">
-        Пароль
-        <input class="input" type="password">
-      </label>
-      <button class="button">Войти</button>
+      <form>
+        <label class="label">
+          Email
+          <input class="input" type="email" v-model="email" @keyup.enter="handleButtonClick">
+        </label>
+        <label class="label">
+          Пароль
+          <input class="input" type="password">
+        </label>
+        <button type="submit" class="button" @click="$router.push('/about')">Войти</button>
+      </form>
     </div>
   </article>
 </template>
@@ -23,10 +25,15 @@ export default {
       email: '',
     }
   },
-  props: {
-    onToggle: {
-      type: Function,
-      default: () => { },
+  methods: {
+    handleButtonClick(event){
+      console.log('click')
+    },
+    registerClick(){
+      console.log('upupclick')
+    },
+    handleButtonClick(event){
+      console.log(event,'key')
     }
   }
 }
@@ -113,4 +120,5 @@ export default {
   color: white;
   background: black;
   transition: .3s;
-}</style>
+}
+</style>

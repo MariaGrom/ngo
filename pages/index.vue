@@ -1,11 +1,18 @@
 <template>
   <div class="container">
-    <Test />
+    <UserCard />
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+// import Axios from 'axios';
 export default {
+  created(){
+    axios.get('/guests-s').then(res => {
+      console.log(res, 'here is res')
+    })
+  }
 };
 </script>
 
@@ -19,9 +26,10 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-wrap: wrap;
   
 }
-/* .title {
+.title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   display: block;
@@ -29,6 +37,6 @@ export default {
   font-size: 100px;
   color: #35495e;
   letter-spacing: 1px;
-} */
+}
 
 </style>

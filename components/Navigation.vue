@@ -1,20 +1,23 @@
 <template>
     <nav class="navigation">
         <Logo :title="logoText" />
-        <nuxt-link v-for="elem in linksArray" class="link" :to="elem.to" :key="elem.title">
-            {{ elem.title }}
+        <nuxt-link v-for="elem in routes" class="link" :to="elem.path" :key="elem.name">
+            {{ elem.name }}
         </nuxt-link>
-        <button class="button" @click=" toggleModal">{{ text }}</button>
-        <Modal v-show="showModal" :onToggle="toggleModal"/>
+        <button class="button" @click="toggleModal('example', $event)">{{ text }}</button>
+        <Modal v-show="showModal" @modalClose="toggleModal" />
+        
     </nav>
 </template>
 
 <script>
+import UserCard from './UserCard.vue'
 import Logo from './navigation/logo'
 export default {
     components: {
-        Logo
-    },
+    Logo,
+    UserCard
+},
     data() {
         return {
             text: 'Enter',
@@ -27,10 +30,17 @@ export default {
         }
     },
     methods: {
-        toggleModal(){
-this.showModal=!this.showModal
+        toggleModal(data, event) {
+            console.log(data)
+            console.log('event', event)
+            this.showModal = !this.showModal
         }
+    },
+  computed:{
+    routes(){
+        return this.$router.options.routes.filter((elem)=> !elem.path.includes(':'))
     }
+  }
 }
 </script>
 
