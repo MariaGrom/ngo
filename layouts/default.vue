@@ -26,6 +26,24 @@ html {
   margin: 0;
 }
 
+.container {
+  background: url('~static/images/bgd.jpeg') center no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  padding-top: 100px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+a, a:visited{
+  color: black;
+  text-decoration: none;
+}
+
 .button--green {
   display: inline-block;
   border-radius: 4px;

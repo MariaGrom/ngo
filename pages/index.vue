@@ -1,17 +1,29 @@
 <template>
   <div class="container">
-    <UserCard />
+    <h1>{{ $store.state.test }}</h1>
+    <UserCard v-for="guest in $store.state.guests" :guest="guest" :key="guest.slug" />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-// import Axios from 'axios';
+// import axios from 'axios';
+
 export default {
-  created(){
-    axios.get('/guests-s').then(res => {
-      console.log(res, 'here is res')
-    })
+  //   data(){
+  // return {
+  //   guests: []
+  // }
+  //   },
+  // created(){
+  // axios.get('/api/guests-s')
+  // .then(res => {
+  //   this.guests = res.data.data;
+  //   console.log(res, 'here is res')
+  //   console.log(this.guests, 'this.guests')
+  // })
+  // },
+  mounted() {
+    this.$store.dispatch('getGuests')
   }
 };
 </script>
@@ -27,8 +39,10 @@ export default {
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
-  
+  padding-top: 100px;
+
 }
+
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -38,5 +52,4 @@ export default {
   color: #35495e;
   letter-spacing: 1px;
 }
-
 </style>

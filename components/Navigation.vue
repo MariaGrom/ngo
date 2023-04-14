@@ -1,6 +1,8 @@
 <template>
     <nav class="navigation">
+        <nuxt-link to="/">
         <Logo :title="logoText" />
+    </nuxt-link>
         <nuxt-link v-for="elem in routes" class="link" :to="elem.path" :key="elem.name">
             {{ elem.name }}
         </nuxt-link>
